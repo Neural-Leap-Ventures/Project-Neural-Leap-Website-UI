@@ -19,7 +19,7 @@ exports.handler = async (event, context) => {
   const e = decodeURIComponent(phone[1])
   //console.log('array', a, b, c, d, e)
   try {
-    mongoose.connect(process.env.MONGODB_URI_DEPLOY, {
+    mongoose.connect(process.env.MONGODB_URI_DEPLOYC, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
