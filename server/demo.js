@@ -17,7 +17,7 @@ exports.handler = async (event, context) => {
   const c = decodeURIComponent(companyName[1])
   const d = decodeURIComponent(companySize[1])
   const e = decodeURIComponent(phone[1])
-  //console.log('array', a, b, c, d, e)
+
   try {
     mongoose.connect(process.env.MONGODB_URI_DEPLOYC, {
       useNewUrlParser: true,
