@@ -10,8 +10,8 @@ exports.handler = async (event, context) => {
   // const lastName = array[1].split('lname=')
   const name = array[0].split('name=')
   const email = array[1].split('email=')
-  const phone = array[3].split('pnumber=')
-  const companyName = array[4].split('cname=')
+  const phone = array[2].split('pnumber=')
+  const companyName = array[3].split('cname=')
   // const companySize = array[3].split('field=')
 
   // const a = decodeURIComponent(firstName[1])
