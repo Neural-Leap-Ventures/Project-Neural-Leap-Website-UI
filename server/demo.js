@@ -8,6 +8,7 @@ exports.handler = async (event, context) => {
   const array = event.body.split('&')
   // const firstName = array[0].split('fname=')
   // const lastName = array[1].split('lname=')
+  console.log(array);
   const name = array[0].split('name=')
   const email = array[1].split('email=')
   const phone = array[2].split('pnumber=')
