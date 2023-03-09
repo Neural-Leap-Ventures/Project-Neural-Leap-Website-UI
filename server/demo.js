@@ -6,17 +6,22 @@ const shortid = require('shortid')
 
 exports.handler = async (event, context) => {
   const array = event.body.split('&')
-  const firstName = array[0].split('fname=')
-  const lastName = array[1].split('lname=')
-  const companyName = array[2].split('cname=')
-  const companySize = array[3].split('field=')
-  const phone = array[4].split('pnumber=')
+  // const firstName = array[0].split('fname=')
+  // const lastName = array[1].split('lname=')
+  const name = array[0].split('name=')
+  const email = array[1].split('email=')
+  const phone = array[3].split('pnumber=')
+  const companyName = array[4].split('cname=')
+  // const companySize = array[3].split('field=')
 
-  const a = decodeURIComponent(firstName[1])
-  const b = decodeURIComponent(lastName[1])
-  const c = decodeURIComponent(companyName[1])
-  const d = decodeURIComponent(companySize[1])
-  const e = decodeURIComponent(phone[1])
+  // const a = decodeURIComponent(firstName[1])
+  // const b = decodeURIComponent(lastName[1])
+  const a = decodeURIComponent(name[1])
+  const b = decodeURIComponent(email[1])
+  const c = decodeURIComponent(phone[1])
+  const d = decodeURIComponent(companyName[1])
+  // const d = decodeURIComponent(companySize[1])
+  
 
   try {
     mongoose.connect(process.env.MONGODB_URI_DEPLOYC, {
@@ -29,11 +34,13 @@ exports.handler = async (event, context) => {
 
     const user = await new User({
       referralId: shortIdVariable,
-      first_name: a,
-      last_name: b,
-      company_name: c,
-      company_size: d,
-      phone_number: e,
+      // first_name: a,
+      // last_name: b,
+      name: a,
+      email: b,
+      phone_number: c,
+      company_name: d,
+      // company_size: d,
     })
 
     await user.save()
