@@ -26,12 +26,12 @@ exports.handler = async (event, context) => {
   const d = decodeURIComponent(companyName[1])
   // const d = decodeURIComponent(companySize[1])
 
-  // send to gohighlevel
+  // send to gohighlevel 
 
   const options = {
     method: 'POST',
     url: 'https://stoplight.io/mocks/highlevel/integrations/39582863/contacts/',
-    headers: { 'Content-Type': 'application/json', Authorization: 'hbcjchbd', Version: '2021-04-15' },
+    headers: { 'Content-Type': 'application/json', Authorization: process.env.GOHIGHLEVEL_ACCESS_KEY, Version: '2021-04-15' },
     data: {
       name: name[1],
       locationId: '',
