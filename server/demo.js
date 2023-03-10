@@ -1,5 +1,5 @@
-//import axios from "axios";
-const axios = require('axios');
+import axios from "axios";
+//const axios = require('axios');
 require('dotenv').config()
 const mongoose = require('mongoose')
 require('./customFunctions/demoModel')
