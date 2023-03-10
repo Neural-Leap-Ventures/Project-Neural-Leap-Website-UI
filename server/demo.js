@@ -1,3 +1,5 @@
+import axios from "axios";
+
 require('dotenv').config()
 const mongoose = require('mongoose')
 require('./customFunctions/demoModel')
@@ -23,6 +25,30 @@ exports.handler = async (event, context) => {
   const c = decodeURIComponent(phone[1])
   const d = decodeURIComponent(companyName[1])
   // const d = decodeURIComponent(companySize[1])
+
+  // send to gohighlevel
+
+  const options = {
+    method: 'POST',
+    url: 'https://stoplight.io/mocks/highlevel/integrations/39582863/contacts/',
+    headers: { 'Content-Type': 'application/json', Authorization: 'hbcjchbd', Version: '2021-04-15' },
+    data: {
+      name: name[1],
+      locationId: '',
+      phone: phone[1],
+      email: email[1],
+      customFields: [{ id: 'companySize', field_value: '' }],
+      companyName: companyName[1]
+    }
+  };
+
+  axios.request(options).then(function (response) {
+    console.log(response.data);  
+  }).catch(function (error) {
+    console.error(error);
+  });
+
+  // send to gohighlevel
   
 
   try {
