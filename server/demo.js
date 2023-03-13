@@ -1,3 +1,4 @@
+// const axios = require('axios');
 import axios from "axios";
 
 require('dotenv').config()
@@ -61,12 +62,12 @@ exports.handler = async (event, context) => {
     console.error(error);
     return {
       statusCode: 400,
-      body: err,
+      body: error,
     }
   });
 
   return {
     statusCode: 400,
-    body: err,
+    body: '',
   }
 }
