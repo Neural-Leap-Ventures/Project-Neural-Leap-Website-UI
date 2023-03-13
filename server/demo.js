@@ -47,8 +47,12 @@ exports.handler = async (event, context) => {
 
 
   try {
+
+    var data = null;
+
     axios.request(options).then(function (response) {
       console.log(response.data);  
+      data = response.data;
       Toastify({
         text: "Data saved successfully. Redirecting to calender page..",
         duration: 3000
@@ -57,14 +61,19 @@ exports.handler = async (event, context) => {
 
     }).catch(function (error) {
       console.error(error);
+      data = error
     });
 
     return {
-      statusCode: 301,
-      headers: {
-        Location: '/calendar.html'
-      }
+      statusCode: 400,
+      body: data,
     }
+    // return {
+    //   statusCode: 301,
+    //   headers: {
+    //     Location: '/calendar.html'
+    //   }
+    // }
   } catch (err) {
     return {
       statusCode: 400,
