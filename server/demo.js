@@ -8,6 +8,9 @@ const User = mongoose.model('chats')
 const shortid = require('shortid')
 import Toastify from 'toastify-js'
 
+function timeout(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 exports.handler = async (event, context) => {
   console.log(event);
@@ -64,9 +67,7 @@ exports.handler = async (event, context) => {
       data = error
     });
 
-    await setTimeout(() => {
-      console.log("Delayed for 10 second.");
-    }, "10000");
+    await timeout(10000);
     
     return {
       statusCode: 301,
@@ -85,5 +86,4 @@ exports.handler = async (event, context) => {
     statusCode: 400,
     body: '',
   }
-
 }
