@@ -51,7 +51,7 @@ exports.handler = async (event, context) => {
 
   try {
 
-    axios.request(options).then(function (response) {
+    await axios.request(options).then(function (response) {
       console.log(response.data);
       data = response.data;
       Toastify({
