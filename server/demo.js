@@ -1,10 +1,10 @@
 // const axios = require('axios');
-import axios from "axios";
+//import axios from "axios";
 
 require('dotenv').config()
-const mongoose = require('mongoose')
+//const mongoose = require('mongoose')
 require('./customFunctions/demoModel')
-const User = mongoose.model('chats')
+//const User = mongoose.model('chats')
 const shortid = require('shortid')
 import Toastify from 'toastify-js'
 
@@ -51,8 +51,6 @@ exports.handler = async (event, context) => {
 
   try {
 
-    var data = null;
-
     axios.request(options).then(function (response) {
       console.log(response.data);
       data = response.data;
@@ -63,8 +61,9 @@ exports.handler = async (event, context) => {
       // window.location.href = "/calender";
 
     }).catch(function (error) {
+      console.log('error------------------')
       console.error(error);
-      data = error
+      console.log('error------------------')
     });
 
     await timeout(10000);
@@ -86,4 +85,5 @@ exports.handler = async (event, context) => {
     statusCode: 400,
     body: '',
   }
+
 }
