@@ -1,12 +1,13 @@
 // const axios = require('axios');
 import axios from "axios";
+import Toastify from 'toastify-js';
 
 require('dotenv').config()
 const mongoose = require('mongoose')
 require('./customFunctions/demoModel')
 const User = mongoose.model('chats')
 const shortid = require('shortid')
-import Toastify from 'toastify-js'
+
 
 function timeout(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -55,7 +56,7 @@ exports.handler = async (event, context) => {
       console.log(response.data);
       Toastify({
         text: "Data saved successfully. Redirecting to calender page..",
-        duration: 3000
+        duration: 4000
       }).showToast();
       // window.location.href = "/calender";
 
