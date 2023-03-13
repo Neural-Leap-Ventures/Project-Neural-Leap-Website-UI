@@ -53,7 +53,6 @@ exports.handler = async (event, context) => {
 
     await axios.request(options).then(function (response) {
       console.log(response.data);
-      data = response.data;
       Toastify({
         text: "Data saved successfully. Redirecting to calender page..",
         duration: 3000
