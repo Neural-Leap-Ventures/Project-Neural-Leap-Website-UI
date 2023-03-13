@@ -1,5 +1,5 @@
-//const axios = require('axios');
 import axios from "axios";
+
 require('dotenv').config()
 const mongoose = require('mongoose')
 require('./customFunctions/demoModel')
@@ -50,9 +50,23 @@ exports.handler = async (event, context) => {
       text: "Data saved successfully. Redirecting to calender page..",
       duration: 3000
     }).showToast();
-    //window.location.href = "/calender";
+    // window.location.href = "/calender";
+    return {
+      statusCode: 301,
+      headers: {
+        Location: '/calender'
+      }
+    }
   }).catch(function (error) {
     console.error(error);
+    return {
+      statusCode: 400,
+      body: err,
+    }
   });
 
+  return {
+    statusCode: 400,
+    body: err,
+  }
 }
