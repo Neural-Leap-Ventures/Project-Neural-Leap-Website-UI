@@ -45,26 +45,32 @@ exports.handler = async (event, context) => {
     }
   };
 
-  axios.request(options).then(function (response) {
-    // console.log(response.data);  
-    Toastify({
-      text: "Data saved successfully. Redirecting to calender page..",
-      duration: 3000
-    }).showToast();
-    // window.location.href = "/calender";
+
+  try {
+    axios.request(options).then(function (response) {
+      // console.log(response.data);  
+      Toastify({
+        text: "Data saved successfully. Redirecting to calender page..",
+        duration: 3000
+      }).showToast();
+      // window.location.href = "/calender";
+
+    }).catch(function (error) {
+      console.error(error);
+    });
+
     return {
       statusCode: 301,
       headers: {
         Location: '/calender'
       }
     }
-  }).catch(function (error) {
-    console.error(error);
+  } catch (err) {
     return {
       statusCode: 400,
-      body: error,
+      body: err,
     }
-  });
+  }
 
   return {
     statusCode: 400,
