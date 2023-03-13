@@ -64,7 +64,7 @@ exports.handler = async (event, context) => {
       data = error
     });
 
-    setTimeout(() => {
+    await setTimeout(() => {
       console.log("Delayed for 10 second.");
     }, "10000");
     
